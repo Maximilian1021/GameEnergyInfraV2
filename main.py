@@ -73,6 +73,5 @@ async def on_command_error(ctx: commands.Context, error):
 
 
 if __name__ == "__main__":
-    print(f"{os.getenv('TOKEN')}")
     load()
     bot.run(f"{os.getenv('TOKEN')}")
