@@ -65,10 +65,8 @@ async def reload(ctx):
 @bot.event
 async def on_command_error(ctx: commands.Context, error):
     errormsg = error
-    embed = discord.Embed(title="Nicht berechtigt!", colour=discord.Colour.red(),
-                          description=f"Du bist nicht berechtigt den Command auszuführen.\n Error: {errormsg}")
-    embed.set_footer(text="Nachricht wird in 10 Sekunden gelöscht")
-
+    embed = discord.Embed(title="Es ist ein Fehler aufgetreten", colour=discord.Colour.red(),
+                          description=f"Bei der Ausführung des Commands ist ein Fehler aufgetreten.\n Error: {errormsg}")
     await ctx.send(embed=embed)
 
 
