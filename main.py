@@ -66,7 +66,7 @@ async def reload(ctx):
 async def on_command_error(ctx: commands.Context, error):
     errormsg = error
     embed = discord.Embed(title="Nicht berechtigt!", colour=discord.Colour.red(),
-                          description=f"Du bist nicht berechtigt den Command auszuführen. Error: {errormsg}")
+                          description=f"Du bist nicht berechtigt den Command auszuführen.\n Error: {errormsg}")
     embed.set_footer(text="Nachricht wird in 10 Sekunden gelöscht")
 
     await ctx.send(embed=embed)
