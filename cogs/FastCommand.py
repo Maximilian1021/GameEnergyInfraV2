@@ -74,6 +74,9 @@ class Fastcommands(commands.Cog):
     @commands.has_permissions(manage_roles=True, ban_members=True)
     async def clear(self, ctx, ammount=10):
         await ctx.channel.purge(limit=ammount)
+        embed = discord.Embed(Title="Nachrichten wurden gelöscht", description=f"Es wurde der clear Command "
+                                                                               f"von {ctx.author} ausgelöst")
+        await ctx.send(embed=embed, delete_after=10)
 
 
 def setup(bot: commands.Bot):
