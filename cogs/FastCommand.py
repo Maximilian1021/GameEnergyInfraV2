@@ -73,7 +73,7 @@ class Fastcommands(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_roles=True, ban_members=True)
     async def clear(self, ctx, ammount=10):
-        await ctx.channel.delete(limit=ammount)
+        await ctx.channel.purge(limit=ammount)
 
 
 def setup(bot: commands.Bot):
