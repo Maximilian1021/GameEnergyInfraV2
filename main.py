@@ -66,7 +66,8 @@ async def reload(ctx):
 async def on_command_error(ctx: commands.Context, error):
     errormsg = error
     embed = discord.Embed(title="Es ist ein Fehler aufgetreten", colour=discord.Colour.red(),
-                          description=f"Bei der Ausführung des Commands ist ein Fehler aufgetreten.\n **Error:** {errormsg}")
+                          description=f"Bei der Ausführung des Commands ist ein Fehler aufgetreten.\n "
+                                      f"**Error:** {errormsg}")
     await ctx.send(embed=embed)
 
 
