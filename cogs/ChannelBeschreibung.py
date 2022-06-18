@@ -33,6 +33,34 @@ class ChannelBeschreibungen(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
+    @commands.command()
+    @commands.has_permissions(manage_roles=True, ban_members=True)
+    async def RollenverteilungPic(self, ctx):
+
+        embed = discord.Embed(colour=discord.Colour.teal())
+        embed.set_image(url="https://img.max1021.de/cooltext393608521752631.png")
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
+
+    @commands.command()
+    @commands.has_permissions(manage_roles=True, ban_members=True)
+    async def RollenverteilungDesc(self, ctx):
+
+        embed = discord.Embed(title="Rollen erhalten!!",
+                              description="Hier könnt ihr euch selbstständig Rollen zuweisen. Derzeit gibt es folgende "
+                                          "Rollen zur Benachrichtigung \n\n"
+                                          ":fire: - Notify-Störung (Wird markiert bei Größeren Störungen)\n"
+                                          ":green_book: - Notify-Neuerung (Wird markiert bei Neuerungen am "
+                                          "Panel oder Discord)\n\n Reagier mit dem entsprechenden Emote um die Rolle "
+                                          "zu erhalten!",
+                              colour=discord.Colour.teal())
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
+
+
+
+
+
 
 
 def setup(bot: commands.Bot):
