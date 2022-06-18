@@ -36,23 +36,23 @@ class Fastcommands(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    @commands.command()
-    async def botHelp(self, ctx):
-        embed = discord.Embed(title="Game-Energy Infra Command Help", colour=discord.Colour.green(),
-                              description="Hier bekommst du alle Commands und Funktionen von Game-Energy Infra Bot!\n"
-                                          "Es gibt einen Musikbot und weitere Sinnvolle Commands Diese findest du hier")
-
-        embed.add_field(name='$join', value="Der Musikbot joint in deinen aktuellen Channel", inline="false")
-        embed.add_field(name='$play <text/Url>', value="Spielt den ersten Song", inline="false")
-        embed.add_field(name='$leave', value='Der Bot verlässt den Channel', inline="false")
-        embed.add_field(name='$queue', value="Der Bot zeigt dir die Warteschlange", inline="false")
-        embed.add_field(name='$skip', value="Überspringt den aktuellen Song", inline="false")
-        embed.add_field(name='$stop', value="Stoppt die Wiedergabe", inline='false')
-        embed.add_field(name='$current', value='Zeigt aktuelle Infos zum Song', inline='false')
-        embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
-                         icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
-        await ctx.send(embed=embed)
-        await ctx.message.delete()
+    # @commands.command()
+    # async def botHelp(self, ctx):
+    #     embed = discord.Embed(title="Game-Energy Infra Command Help", colour=discord.Colour.green(),
+    #                           description="Hier bekommst du alle Commands und Funktionen von Game-Energy Infra Bot!\n"
+    #                                       "Es gibt einen Musikbot und weitere Sinnvolle Commands Diese findest du hier")
+    #
+    #     embed.add_field(name='$join', value="Der Musikbot joint in deinen aktuellen Channel", inline="false")
+    #     embed.add_field(name='$play <text/Url>', value="Spielt den ersten Song", inline="false")
+    #     embed.add_field(name='$leave', value='Der Bot verlässt den Channel', inline="false")
+    #     embed.add_field(name='$queue', value="Der Bot zeigt dir die Warteschlange", inline="false")
+    #     embed.add_field(name='$skip', value="Überspringt den aktuellen Song", inline="false")
+    #     embed.add_field(name='$stop', value="Stoppt die Wiedergabe", inline='false')
+    #     embed.add_field(name='$current', value='Zeigt aktuelle Infos zum Song', inline='false')
+    #     embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
+    #                      icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
+    #     await ctx.send(embed=embed)
+    #     await ctx.message.delete()
 
     @commands.command()
     @commands.has_permissions(manage_roles=True, ban_members=True)
@@ -64,19 +64,13 @@ class Fastcommands(commands.Cog):
                                           " in Frage kommt. Benötige ich noch einige Infos von dir.\n\n"
                                           "- Mit welcher Sprache ist der Bot geschrieben? (Java, Python, JS etc.)\n"
                                           "- Welche Funktionen hat der Bot? (Kick, Ban, Verify, Musik etc.) \n"
-                                          "\n Schreibe bitte auf jede Frage __eine Antwort__")
+                                          "- Auf wie vielen Server ist dein Bot derzeit aktiv? \n"
+                                          "\n Bitte beantworte alle Fragen ehrlich!")
         embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
                          icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    @commands.command()
-    @commands.has_permissions(manage_roles=True, ban_members=True)
-    async def clear(self, ctx, ammount=10):
-        await ctx.channel.purge(limit=ammount)
-        embed = discord.Embed(Title="Nachrichten wurden gelöscht", description=f"Es wurde der clear Command "
-                                                                               f"von {ctx.author} ausgelöst")
-        await ctx.send(embed=embed, delete_after=10)
 
 
 def setup(bot: commands.Bot):
