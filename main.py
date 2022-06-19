@@ -23,6 +23,9 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('---------------------------')
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Game-Energy Discord"),
+                              status=discord.Status.idle)
+
 
 
 def extensions():
@@ -67,6 +70,8 @@ async def reload(ctx):
 
 @bot.event
 async def on_command_error(ctx: commands.Context, error):
+    if ctx.command in ["rename", "close"]:
+        return
     errormsg = error
     embed = discord.Embed(title="Es ist ein Fehler aufgetreten", colour=discord.Colour.red(),
                           description=f"Bei der Ausführung des Commands ist ein Fehler aufgetreten.\n "
