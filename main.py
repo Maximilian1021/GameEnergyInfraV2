@@ -4,18 +4,21 @@ from pathlib import Path
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-
+from datetime import datetime
 load_dotenv("Bot.env")
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), intents=discord.Intents.all(),
                    case_insensitive=True, description="Bot description", help_command=None, auto_sync_commands=True
                    )
+now = datetime.now()
+dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+
 
 
 @bot.event
 async def on_ready():
     print('---------------------------')
-    print(datetime.datetime.now())
+    print(dt_string)
     print('Logged in as:')
     print(bot.user.name)
     print(bot.user.id)
