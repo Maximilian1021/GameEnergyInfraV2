@@ -11,10 +11,10 @@ class Fastcommands(commands.Cog):
     @commands.has_permissions(manage_roles=True, ban_members=True)
     async def pmbybot(self, ctx):
         embed = discord.Embed(title="Anfrage zum Anlegen des Benutzeraccounts", colour=discord.Colour.blurple(),
-                              description="Der Bot <@962376837063905301> hat dir eine PM geschrieben, in dem du "
-                                          "aufgefordert wirst ein Benutzeraccount für das Panel zu erstellen wo du "
-                                          "dein Server verwalten kannst. Bitte füll das ganze aus und melde dich erneut"
-                                          " hier im Ticket")
+                              description="Der Bot <@962376837063905301> hat dir eine PM geschrieben, in der du "
+                                          "aufgefordert wirst einen Benutzeraccount für das Panel zu erstellen, auf dem"
+                                          " du dein Server verwalten kannst. Bitte fülle das ganze aus und melde dich "
+                                          "erneut hier im Ticket")
         embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
                          icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
         await ctx.send(embed=embed)
@@ -24,12 +24,12 @@ class Fastcommands(commands.Cog):
     @commands.has_permissions(manage_roles=True, ban_members=True)
     async def pmWelcome(self, ctx):
         embed = discord.Embed(title="Herzlich Willkommen bei Game-Energy", colour=discord.Colour.blurple(),
-                              description="Willkommen bei **Game-Energy**. Vielen Dank das du eine Anfrage für ein "
+                              description="Willkommen bei **Game-Energy**. Vielen Dank, dass du eine Anfrage für ein "
                                           "Server Sponsoring schickst.\n Bevor ich entscheiden kann, ob ein Sponsoring"
-                                          " in Frage kommt. Benötige ich noch einige Infos von dir.\n\n"
-                                          "- Mit wievielen Spielern gleichzeitig rechnest du das auf den Server sind?\n"
-                                          "- Kannst du mir sagen wie lange dein Projekt geht?"
-                                          "\n- Hast du Erfahrungen wie du einen Server verwaltest und einrichtest?\n\n"
+                                          " in Frage kommt, benötige ich noch einige Infos von dir.\n\n"
+                                          "- Mit wie vielen Spielern gleichzeitig rechnest auf dem Server?\n"
+                                          "- Kannst du mir sagen wie lange dein Projekt geht?\n"
+                                          "- Hast du Erfahrungen, wie du einen Server verwaltest und einrichtest?\n\n"
                                           "Schreibe bitte auf jede Frage __eine Antwort__")
         embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
                          icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
@@ -58,10 +58,10 @@ class Fastcommands(commands.Cog):
     @commands.has_permissions(manage_roles=True, ban_members=True)
     async def pmWelcomeBot(self, ctx):
         embed = discord.Embed(title="Herzlich Willkommen bei Game-Energy", colour=discord.Colour.blurple(),
-                              description="Willkommen bei **Game-Energy**. Vielen Dank das du eine Anfrage für ein "
+                              description="Willkommen bei **Game-Energy**. Vielen Dank, dass du eine Anfrage für ein "
                                           "Discord-Bot-Hosting schickst.\n Bevor ich entscheiden kann, ob ein "
-                                          "Discordbot-Sponsoring"
-                                          " in Frage kommt. Benötige ich noch einige Infos von dir.\n\n"
+                                          "Discordbot-Sponsoring in Frage kommt. Benötige ich noch einige Infos "
+                                          "von dir.\n\n"
                                           "- Mit welcher Sprache ist der Bot geschrieben? (Java, Python, JS etc.)\n"
                                           "- Welche Funktionen hat der Bot? (Kick, Ban, Verify, Musik etc.) \n"
                                           "- Auf wie vielen Server ist dein Bot derzeit aktiv? \n"
@@ -70,7 +70,6 @@ class Fastcommands(commands.Cog):
                          icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
         await ctx.send(embed=embed)
         await ctx.message.delete()
-
 
 
 def setup(bot: commands.Bot):

@@ -19,13 +19,13 @@ class ChannelBeschreibungen(commands.Cog):
     @commands.has_permissions(manage_roles=True, ban_members=True)
     async def VorschlagDesc(self, ctx):
         embed = discord.Embed(title="Vorschlag einreichen!",
-                              description="Dieser Channel ist für Vorschläge welche Fragen im FAQ aufgenommen werden "
-                                          "sollen. Bitte schreibt eure Fragen und eine Mögliche Antwort in den Channel "
-                                          "\n\n_Beispiel:_\n  **F**: Wie bekomm ich ein Server\n**A**: Erstell "
-                                          "ein Ticket!"
+                              description="Dieser Channel ist für Vorschläge welche Fragen in den FAQ aufgenommen "
+                                          "werden sollen gedacht. Bitte schreibt eure Fragen und eine Mögliche Antwort"
+                                          " in diesen Channel \n\n_Beispiel:_\n  **F**: Wie bekomme ich ein Server\n"
+                                          "**A**: Erstelle ein Ticket!"
                                           "\n\n Der Bot fügt automatisch :thumbsup: und :thumbsdown: an deine "
-                                          "Nachricht. Jeder User kann dafür abstimmen!! \nDu kannst nur alle 60 "
-                                          "Minuten eine Nachricht in den Channel schreiben!",
+                                          "Nachricht als Reaktion hinzu. Jeder User kann dafür abstimmen!! \nDu kannst "
+                                          "nur alle 60 Minuten eine Nachricht in den Channel schreiben!",
                               colour=discord.Colour.teal())
         await ctx.send(embed=embed)
         await ctx.message.delete()

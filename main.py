@@ -5,6 +5,7 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 from datetime import datetime
+
 load_dotenv("Bot.env")
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), intents=discord.Intents.all(),
@@ -12,7 +13,6 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), intents=disco
                    )
 now = datetime.now()
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-
 
 
 @bot.event
@@ -25,7 +25,6 @@ async def on_ready():
     print('---------------------------')
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Game-Energy Discord"),
                               status=discord.Status.idle)
-
 
 
 def extensions():
@@ -62,7 +61,7 @@ async def client_reload():
 async def reload(ctx):
     await client_reload()
     embed = discord.Embed(title="Reload abgeschlossen!", colour=discord.Colour.red(),
-                          description="Alle Module des Discordsbots wurden erfolgreich neugeladen")
+                          description="Alle Module des Discord Bots wurden erfolgreich neu geladen")
     embed.set_footer(text=f"Reload wurde von {ctx.author} ausgelöst",
                      icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
     await ctx.send(embed=embed)
@@ -75,7 +74,7 @@ async def on_command_error(ctx: commands.Context, error):
     errormsg = error
     embed = discord.Embed(title="Es ist ein Fehler aufgetreten", colour=discord.Colour.red(),
                           description=f"Bei der Ausführung des Commands ist ein Fehler aufgetreten.\n "
-                                      f"**Error:** {errormsg}")
+                                      f"**Error:** {error}")
     await ctx.send(embed=embed)
 
 

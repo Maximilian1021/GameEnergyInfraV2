@@ -26,7 +26,7 @@ class RoleReact(commands.Cog):
                                           "Rollen zur Benachrichtigung \n\n"
                                           ":fire: - Notify-Störung (Wird markiert bei Größeren Störungen)\n"
                                           ":green_book: - Notify-Neuerung (Wird markiert bei Neuerungen am "
-                                          "Panel oder Discord)\n\n Reagier mit dem entsprechenden Emote um die Rolle "
+                                          "Panel oder Discord)\n\n Reagiere mit dem entsprechenden Emote um die Rolle "
                                           "zu erhalten!",
                               colour=discord.Colour.teal())
         mess = await ctx.send(embed=embed)

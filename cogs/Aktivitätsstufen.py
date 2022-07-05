@@ -12,7 +12,7 @@ class Aktivitätsstufen(commands.Cog):
     async def akvSt1(self, ctx):
         embed = discord.Embed(title="Stufe 1 - Aktivitätsregelung", colour=discord.Colour.green(),
                               description="Ich habe festgestellt, das seit längerem keine Aktivität auf dem "
-                                          "Server zu sehn ist!\n Gibt es derzeit irgendwelche Probleme bei welchen "
+                                          "Server zu sehen ist!\n Gibt es derzeit irgendwelche Probleme bei welchen "
                                           "ich dich ggf. Unterstützen kann? \n\n Stufe 1 hat keine Auswirkungen "
                                           "auf deinen Server!\n\n Bitte melde dich innerhalb von **7 Tagen** hier "
                                           "im Ticket und sag mir wie es mit dem Sponsoring weitergehen soll!\n\n"
@@ -31,10 +31,10 @@ class Aktivitätsstufen(commands.Cog):
                                           "du hast dich bei mir noch nicht gemeldet! Es treten nun folgende Punkte"
                                           " in Kraft: \n\nSollte dein Server noch laufen, wird dieser nun"
                                           " **gestoppt**. Du kannst ihn jederzeit wieder starten Der Server"
-                                          " wird aber regelmäßig Kontrolliert ob auch wirklich drauf "
+                                          " wird aber regelmäßig kontrolliert, ob auch wirklich drauf "
                                           "gespielt wird. \n oder \n Sollte der Server bereits gestoppt "
                                           "sein bleibt er gestoppt und steht weiterhin unter Beobachtung! "
-                                          "\n\n Du hast nun __3 Tage__ Zeit mir Rückzumelden bevor du "
+                                          "\n\n Du hast nun __3 Tage__ Zeit dich bei mir Zurückzumelden, bevor du "
                                           "in Stufe 3 Rutscht! \n\n"
                                           "Viele Grüße \n\n **Maximilian1021** \n Game-Energy \n Administrator /"
                                           " Owner")
@@ -51,7 +51,7 @@ class Aktivitätsstufen(commands.Cog):
                                           "sich nicht verändert! Dein Server ist nun gesperrt und du kannst "
                                           "auf keine Daten mehr zugreifen.\n\n **Das Sponsoring ist somit "
                                           "beendet**! \n\n Du erhältst in Kürze eine E-Mail mit "
-                                          "dem letzen Backup deines Servers! \nDu bist für 3 Monate vom Sponsoring "
+                                          "dem letzten Backup deines Servers! \nDu bist für 3 Monate vom Sponsoring "
                                           "ausgeschlossen! Danach kannst du wieder eine Anfrage stellen\n\n"
                                           "Viele Grüße \n\n **Maximilian1021** \n Game-Energy \n Administrator /"
                                           " Owner")
@@ -64,10 +64,10 @@ class Aktivitätsstufen(commands.Cog):
     @commands.has_permissions(manage_roles=True, ban_members=True)
     async def MailBackup(self, ctx):
         embed = discord.Embed(title="Information über das Backup", colour=discord.Colour.darker_gray(),
-                              description="Du erhältst in den nächsten Paar Minuten eine E-Mail mit den Infos "
+                              description="Du erhältst in den nächsten paar Minuten eine E-Mail mit den Infos "
                                           "zu deinem Backup. Damit nur du das Backup herunterladen kannst bekommst "
                                           "eine PIN in der Mail mit dem Link zugeteilt. Damit kannst nur du auf "
-                                          "den Download zugreifen! \n \n Wenn du Fragen dazuhast, schreib mich "
+                                          "den Download zugreifen! \n \n Wenn du Fragen dazu hast, schreib mich "
                                           "einfach an!\n\n"
                                           "Viele Grüße \n\n **Maximilian1021** \n Game-Energy \n Administrator /"
                                           " Owner")
