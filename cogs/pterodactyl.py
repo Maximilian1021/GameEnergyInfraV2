@@ -65,8 +65,9 @@ class Pterodactyl(commands.Cog):
                               description="Du bist nicht berechtigt den Command auszuführen.")
         embed.set_footer(text="Nachricht wird in 10 Sekunden gelöscht")
         raise err
-        print(err)
-        await ctx.respond(embed=embed, delete_after=10)
+        # Currently unreachable code (due to raise). Commenting out for now.
+        # print(err)
+        # await ctx.respond(embed=embed, delete_after=10)
 
 
 def setup(bot: commands.Bot):
@@ -90,10 +91,10 @@ class CreateAccount(discord.ui.View):
 
     @discord.ui.button(label="Account erstellen", style=discord.ButtonStyle.primary, custom_id="CreateAccount")
     async def send_modal(self, button: discord.ui.Button, interaction: discord.Interaction):
-        await interaction.response.send_modal(AcccountModal())
+        await interaction.response.send_modal(AccountModal())
 
 
-class AcccountModal(discord.ui.Modal):
+class AccountModal(discord.ui.Modal):
     def __init__(self):
         super().__init__(title="Account erstellen")
         self.add_item(discord.ui.InputText(label="Vorname", placeholder="Max"))

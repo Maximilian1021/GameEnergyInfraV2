@@ -1,3 +1,5 @@
+import typing
+
 import discord
 from discord.ext import commands
 
@@ -36,34 +38,35 @@ class RoleReact(commands.Cog):
 
     @commands.Cog.listener("on_raw_reaction_add")
     async def reaction_add(self, payload: discord.RawReactionActionEvent):
-        if not payload.message_id == self.message_id:
+        role = await self.get_role(payload)
+        if not role:
             return
-        guild = self.bot.get_guild(payload.guild_id)
-        if payload.emoji.id:
-            return
-        if str(payload.emoji) == "🔥":
-            role = guild.get_role(889983007480479744)
-        elif str(payload.emoji) == "📗":
-            role = guild.get_role(889983085108678686)
-        else:
-            return
-        await guild.get_member(payload.user_id).add_roles(role, reason="Reactionroles")
+        await role.guild.get_member(payload.user_id).add_roles(role, reason="Reactionroles")
 
     @commands.Cog.listener("on_raw_reaction_remove")
     async def reaction_remove(self, payload: discord.RawReactionActionEvent):
-        if not payload.message_id == self.message_id:
+        role = await self.get_role(payload)
+        if not role:
             return
+        await role.guild.get_member(payload.user_id).remove_roles(role, reason="Reactionroles")
+
+    async def get_role(self, payload: discord.RawReactionActionEvent) -> typing.Union[discord.Role, None]:
+        """
+        Returns the corresponding role to a given reaction
+        :param payload: The payload of the reaction
+        :return: The role
+        """
+        if not payload.message_id == self.message_id:
+            return None
         guild = self.bot.get_guild(payload.guild_id)
         if payload.emoji.id:
-            return
+            return None
         if str(payload.emoji) == "🔥":
-            role = guild.get_role(889983007480479744)
+            return guild.get_role(889983007480479744)
         elif str(payload.emoji) == "📗":
-            role = guild.get_role(889983085108678686)
+            return guild.get_role(889983085108678686)
         else:
-            return
-        await guild.get_member(payload.user_id).remove_roles(role, reason="Reactionroles")
-
+            return None
 
 def setup(bot: commands.Bot):
     bot.add_cog(RoleReact(bot))
