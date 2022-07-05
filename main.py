@@ -70,7 +70,7 @@ async def reload(ctx):
 
 @bot.event
 async def on_command_error(ctx: commands.Context, error):
-    if ctx.command in ["rename", "close"]:
+    if ctx.invoked_with in ["rename", "close"]:
         return
     errormsg = error
     embed = discord.Embed(title="Es ist ein Fehler aufgetreten", colour=discord.Colour.red(),
