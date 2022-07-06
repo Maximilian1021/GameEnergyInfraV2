@@ -3,7 +3,7 @@ from discord.ext import commands
 channelid = 987494836783427594
 
 
-class VorschaegeAddReaction(commands.Cog):
+class VorschlaegeAddReaction(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -15,4 +15,4 @@ class VorschaegeAddReaction(commands.Cog):
 
 
 def setup(bot: commands.Bot):
-    bot.add_cog(VorschaegeAddReaction(bot))
+    bot.add_cog(VorschlaegeAddReaction(bot))
