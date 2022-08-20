@@ -2,7 +2,7 @@ import random
 import discord
 from discord.ext import commands
 
-time = "08.07.2022 - 11:00 Uhr"
+time = "01.08.2022 - 18:00 Uhr"
 prize = "1 Random Steam Key"
 
 
