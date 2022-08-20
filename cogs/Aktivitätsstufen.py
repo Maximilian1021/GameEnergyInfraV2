@@ -8,7 +8,7 @@ class Aktivitätsstufen(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.has_permissions(manage_roles=True, ban_members=True)
+    @commands.has_permissions(VIEW_AUDIT_LOG=True, ban_members=True)
     async def akvSt1(self, ctx):
         embed = discord.Embed(title="Stufe 1 - Aktivitätsregelung", colour=discord.Colour.green(),
                               description="Ich habe festgestellt, das seit längerem keine Aktivität auf dem "
@@ -44,7 +44,7 @@ class Aktivitätsstufen(commands.Cog):
         await ctx.message.delete()
 
     @commands.command()
-    @commands.has_permissions(manage_roles=True, ban_members=True)
+    @commands.has_permissions(VIEW_AUDIT_LOG=True, ban_members=True)
     async def akvSt3(self, ctx):
         embed = discord.Embed(title="Stufe 3 - Aktivitätsregelung", colour=discord.Colour.red(),
                               description="Du hast dich nicht gemeldet oder die Aktivität auf dem Server hat "
@@ -61,7 +61,7 @@ class Aktivitätsstufen(commands.Cog):
         await ctx.message.delete()
 
     @commands.command()
-    @commands.has_permissions(manage_roles=True, ban_members=True)
+    @commands.has_permissions(VIEW_AUDIT_LOG=True, ban_members=True)
     async def MailBackup(self, ctx):
         embed = discord.Embed(title="Information über das Backup", colour=discord.Colour.darker_gray(),
                               description="Du erhältst in den nächsten paar Minuten eine E-Mail mit den Infos "
