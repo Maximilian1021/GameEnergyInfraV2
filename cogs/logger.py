@@ -20,8 +20,8 @@ class Logger(commands.Cog):
         """
         embed = discord.Embed(title="Neues Mitglied",
                               description=f"{member.mention} ist dem Server beigetreten!\n"
-                                          f"Erstellt am <t:{member.created_at.timestamp()}:F> (<t:"
-                                          f"{member.created_at.timestamp()}:R>.",
+                                          f"Erstellt am <t:{int(member.created_at.timestamp())}:F> (<t:"
+                                          f"{int(member.created_at.timestamp())}:R>).",
                               colour=discord.Colour.green())
         embed.set_thumbnail(url=member.avatar.url)
         embed.set_footer(text=f"{member} ({member.id})")
@@ -36,8 +36,8 @@ class Logger(commands.Cog):
         """
         embed = discord.Embed(title="Server verlassen",
                               description=f"{member} hat den Server verlassen!\n"
-                                          f"Beigetreten am <t:{member.joined_at.timestamp()}:F> (<t:"
-                                          f"{member.joined_at.timestamp()}:R>.",
+                                          f"Beigetreten am <t:{int(member.joined_at.timestamp())}:F> (<t:"
+                                          f"{int(member.joined_at.timestamp())}:R>).",
                               colour=discord.Colour.red())
         embed.set_thumbnail(url=member.avatar.url)
         embed.set_footer(text=f"{member} ({member.id})")
@@ -66,7 +66,8 @@ class Logger(commands.Cog):
         """
         embed = discord.Embed(title="Nachricht gelöscht",
                               description=f"{message.author.mention} hat eine Nachricht gelöscht.\n"
-                                          f"Nachricht: {message.content}",
+                                          f"Nachricht: {message.content} \n"
+                                          f"Channel: {message.channel.mention}",
                               colour=discord.Colour.red())
         embed.set_footer(text=f"{message.author} ({message.author.id})")
         await self.channel.send(embed=embed)
@@ -82,7 +83,8 @@ class Logger(commands.Cog):
         embed = discord.Embed(title="Nachricht bearbeitet",
                               description=f"{before.author.mention} hat eine Nachricht bearbeitet.\n"
                                           f"**Vorher:**\n{before.content}\n"
-                                          f"**Nachher:**\n{after.content}",
+                                          f"**Nachher:**\n{after.content}\n"
+                                          f"**Channel:**:\n{after.channel.mention}",
                               colour=discord.Colour.blue())
         embed.set_footer(text=f"{before.author} ({before.author.id})")
         await self.channel.send(embed=embed)
