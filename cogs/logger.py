@@ -82,3 +82,7 @@ class Logger(commands.Cog):
                               colour=discord.Colour.blue())
         embed.set_footer(text=f"{before.author} ({before.author.id})")
         await self.channel.send(embed=embed)
+
+
+def setup(bot: commands.Bot):
+    bot.add_cog(Logger(bot))
