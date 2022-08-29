@@ -8,7 +8,7 @@ class Fastcommands(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.has_permissions(manage_roles=True, ban_members=True)
+    @commands.has_permissions(view_audit_log=True, ban_members=True)
     async def pmbybot(self, ctx):
         embed = discord.Embed(title="Anfrage zum Anlegen des Benutzeraccounts", colour=discord.Colour.blurple(),
                               description="Der Bot <@962376837063905301> hat dir eine PM geschrieben, in der du "
@@ -21,7 +21,7 @@ class Fastcommands(commands.Cog):
         await ctx.message.delete()
 
     @commands.command()
-    @commands.has_permissions(manage_roles=True, ban_members=True)
+    @commands.has_permissions(view_audit_log=True, ban_members=True)
     async def pmWelcome(self, ctx):
         embed = discord.Embed(title="Herzlich Willkommen bei Game-Energy", colour=discord.Colour.blurple(),
                               description="Willkommen bei **Game-Energy**. Vielen Dank, dass du eine Anfrage für ein "
@@ -55,7 +55,7 @@ class Fastcommands(commands.Cog):
     #     await ctx.message.delete()
 
     @commands.command()
-    @commands.has_permissions(manage_roles=True, ban_members=True)
+    @commands.has_permissions(view_audit_log=True, ban_members=True)
     async def pmWelcomeBot(self, ctx):
         embed = discord.Embed(title="Herzlich Willkommen bei Game-Energy", colour=discord.Colour.blurple(),
                               description="Willkommen bei **Game-Energy**. Vielen Dank, dass du eine Anfrage für ein "
