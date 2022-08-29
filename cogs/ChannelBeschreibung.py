@@ -30,7 +30,6 @@ class ChannelBeschreibungen(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-
     @commands.command()
     @commands.has_permissions(manage_roles=True, ban_members=True)
     async def URLAUB(self, ctx):

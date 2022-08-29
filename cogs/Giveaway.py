@@ -6,8 +6,6 @@ time = "01.08.2022 - 18:00 Uhr"
 prize = "1 Random Steam Key"
 
 
-
-
 class Giveaway(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -15,8 +13,8 @@ class Giveaway(commands.Cog):
     @commands.has_permissions(manage_roles=True, ban_members=True)
     @commands.command()
     async def GiveawayCreate(self, ctx):
-        embed = discord.Embed(colour=discord.Colour.teal(), title="Neues Gewinnspiel", description="Reagiere mit "
-                                                                                                      ":tada: um teilzunehmen!")
+        embed = discord.Embed(colour=discord.Colour.teal(), title="Neues Gewinnspiel",
+                              description="Reagiere mit :tada:, um teilzunehmen!")
         embed.add_field(name="Preis", value="{}".format(prize), inline=False)
         embed.add_field(name="Hosted by", value=f"{ctx.author.mention}", inline=False)
         embed.add_field(name="Auslosung gegen", value=f"{time}")
