@@ -9,7 +9,7 @@ class Logger(commands.Cog):
 
     @commands.Cog.listener("on_ready")
     async def on_ready(self):
-        self.channel = self.bot.get_channel(739087150109879552)
+        self.channel = self.bot.get_channel(889984840718512150)
 
     @commands.Cog.listener("on_member_join")
     async def join_logger(self, member: discord.Member):
