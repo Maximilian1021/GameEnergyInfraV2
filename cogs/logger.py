@@ -52,7 +52,8 @@ class Logger(commands.Cog):
         """
         embed = discord.Embed(title="Neuer Invite Link",
                               description=f"{invite.inviter.mention} hat einen neuen Link erstellt.\n"
-                                          f"Link: {invite.url}",
+                                          f"Link: {invite.url} \n"
+                                          f"Gültigkeit <t:{int(invite.expires_at.timestamp())}:F>",
                               colour=discord.Colour.blue())
         embed.set_footer(text=f"{invite.inviter} ({invite.inviter.id})")
         await self.channel.send(embed=embed)
