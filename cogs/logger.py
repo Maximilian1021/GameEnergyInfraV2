@@ -23,7 +23,7 @@ class Logger(commands.Cog):
                                           f"Erstellt am <t:{member.created_at.timestamp()}:F> (<t:"
                                           f"{member.created_at.timestamp()}:R>.",
                               colour=discord.Colour.green())
-        embed.set_thumbnail(url=member.avatar_url)
+        embed.set_thumbnail(url=member.avatar.url)
         embed.set_footer(text=f"{member} ({member.id})")
         await self.channel.send(embed=embed)
 
@@ -39,7 +39,7 @@ class Logger(commands.Cog):
                                           f"Beigetreten am <t:{member.joined_at.timestamp()}:F> (<t:"
                                           f"{member.joined_at.timestamp()}:R>.",
                               colour=discord.Colour.red())
-        embed.set_thumbnail(url=member.avatar_url)
+        embed.set_thumbnail(url=member.avatar.url)
         embed.set_footer(text=f"{member} ({member.id})")
         await self.channel.send(embed=embed)
 
