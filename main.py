@@ -11,6 +11,7 @@ load_dotenv("Bot.env")
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), intents=discord.Intents.all(),
                    case_insensitive=True, description="Bot description", help_command=None, auto_sync_commands=True
                    )
+
 now = datetime.now()
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
@@ -54,8 +55,9 @@ def unload():
 async def client_reload():
     unload()
     load()
-    print(f"Reloaded at {datetime.datetime.now()}")
-
+    print("")
+    print(f"Reloaded at {dt_string}")
+    print("")
 
 @bot.command()
 async def reload(ctx):

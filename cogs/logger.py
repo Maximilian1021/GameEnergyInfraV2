@@ -65,6 +65,8 @@ class Logger(commands.Cog):
         :param message: Gelöschte Nachricht
         :return:
         """
+        if not message.guild:
+            return
         embed = discord.Embed(title="Nachricht gelöscht",
                               description=f"{message.author.mention} hat eine Nachricht gelöscht.\n"
                                           f"Nachricht: {message.content} \n"
@@ -81,6 +83,8 @@ class Logger(commands.Cog):
         :param after: Neue Nachricht
         :return:
         """
+        if not after.guild:
+            return
         embed = discord.Embed(title="Nachricht bearbeitet",
                               description=f"{before.author.mention} hat eine Nachricht bearbeitet.\n"
                                           f"**Vorher:**\n{before.content}\n"
