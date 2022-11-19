@@ -8,7 +8,7 @@ class RoleReact(commands.Cog):
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self.message_id: int = 988133183541354516
+        self.message_id: int = 1043440954595627048
 
     @commands.command()
     @commands.has_permissions(manage_roles=True, ban_members=True)
@@ -28,12 +28,15 @@ class RoleReact(commands.Cog):
                                           "Rollen zur Benachrichtigung \n\n"
                                           ":fire: - Notify-Störung (Wird markiert bei Größeren Störungen)\n"
                                           ":green_book: - Notify-Neuerung (Wird markiert bei Neuerungen am "
-                                          "Panel oder Discord)\n\n Reagiere mit dem entsprechenden Emote um die Rolle "
+                                          "Panel oder Discord)\n "
+                                          ":soccer: - Tippspiel (Wird markiert, wenn es Infos ums Tippspiel geht)\n\n"
+                                          "Reagiere mit dem entsprechenden Emote um die Rolle "
                                           "zu erhalten!",
                               colour=discord.Colour.teal())
         mess = await ctx.send(embed=embed)
         await mess.add_reaction("🔥")
         await mess.add_reaction("📗")
+        await mess.add_reaction("⚽")
         await ctx.message.delete()
 
     @commands.Cog.listener("on_raw_reaction_add")
@@ -63,9 +66,12 @@ class RoleReact(commands.Cog):
             return None
         if str(payload.emoji) == "🔥":
             return guild.get_role(889983007480479744)
-        elif str(payload.emoji) == "📗":
+        if str(payload.emoji) == "📗":
             return guild.get_role(889983085108678686)
+        elif str(payload.emoji) == "⚽":
+            return guild.get_role(1043437336085672016)
         else:
+            print("NO")
             return None
 
 def setup(bot: commands.Bot):
@@ -74,3 +80,4 @@ def setup(bot: commands.Bot):
 
     # 889983085108678686 -> Notify Neuerung 📗
     # 889983007480479744 -> Notify Störung 🔥
+    # 1043437336085672016 -> Tippspiel ⚽
