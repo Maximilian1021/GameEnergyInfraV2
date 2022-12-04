@@ -36,11 +36,9 @@ class Fastcommands(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    # @commands.command()
-    # async def botHelp(self, ctx):
-    #     embed = discord.Embed(title="Game-Energy Infra Command Help", colour=discord.Colour.green(),
-    #                           description="Hier bekommst du alle Commands und Funktionen von Game-Energy Infra Bot!\n"
-    #                                       "Es gibt einen Musikbot und weitere Sinnvolle Commands Diese findest du hier")
+    # @commands.command() async def botHelp(self, ctx): embed = discord.Embed(title="Game-Energy Infra Command Help",
+    # colour=discord.Colour.green(), description="Hier bekommst du alle Commands und Funktionen von Game-Energy Infra
+    # Bot!\n" "Es gibt einen Musikbot und weitere Sinnvolle Commands Diese findest du hier")
     #
     #     embed.add_field(name='$join', value="Der Musikbot joint in deinen aktuellen Channel", inline="false")
     #     embed.add_field(name='$play <text/Url>', value="Spielt den ersten Song", inline="false")
@@ -67,6 +65,43 @@ class Fastcommands(commands.Cog):
                                           "- Welche Funktionen hat der Bot? (Kick, Ban, Verify, Musik etc.) \n"
                                           "- Auf wie vielen Server ist dein Bot derzeit aktiv? \n"
                                           "\n Bitte beantworte alle Fragen ehrlich!")
+        embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
+                         icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
+
+    @commands.command()
+    @commands.has_permissions(view_audit_log=True, ban_members=True)
+    async def resetPW(self, ctx):
+        embed = discord.Embed(title="Passwort zurücksetzen", colour=discord.Colour.blurple(),
+                              description="Du kannst dein Passwort unter \n\n"
+                                          "https://panel.game-energy.de/auth/password \n \n zurücksetzen!")
+        embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
+                         icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
+
+    @commands.command()
+    @commands.has_permissions(view_audit_log=True, ban_members=True)
+    async def Subdomain(self, ctx):
+        embed = discord.Embed(title="Eigende Subdomain", colour=discord.Colour.blurple(),
+                              description="Es stehen folgende Domains für eine Subdomain zur Verfügung! \n\n"
+                                          "`***.game-energy.de`\n"
+                                          "`***.game-energy.eu`\n"
+                                          "`***.super-creative.de`\n\n"
+                                          "Es kann nur das `***` geändert werden.")
+        embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
+                         icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
+
+    @commands.command()
+    @commands.has_permissions(view_audit_log=True, ban_members=True)
+    async def SubdomainDone(self, ctx):
+        embed = discord.Embed(title="Subdomain erstellt", colour=discord.Colour.blurple(),
+                              description="Deine Subdomain wurde nun angelegt. \n\n"
+                                          "Es kann bis zu 24 Stunden dauern bis diese jedoch funktioniert \n \n "
+                                          "Melde dich bitte erneut sollte sie nach 36h (1.5 Tage) nicht funktionieren!")
         embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
                          icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
         await ctx.send(embed=embed)
