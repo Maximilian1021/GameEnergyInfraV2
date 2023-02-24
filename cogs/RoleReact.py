@@ -8,7 +8,7 @@ class RoleReact(commands.Cog):
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self.message_id: int = 1043440954595627048
+        self.message_id: int = 1074077187285721290
 
     @commands.command()
     @commands.has_permissions(manage_roles=True, ban_members=True)
@@ -66,12 +66,16 @@ class RoleReact(commands.Cog):
             return None
         if str(payload.emoji) == "🔥":
             return guild.get_role(889983007480479744)
-        if str(payload.emoji) == "📗":
+        elif str(payload.emoji) == "📗":
             return guild.get_role(889983085108678686)
-        elif str(payload.emoji) == "⚽":
-            return guild.get_role(1043437336085672016)
         else:
             print("NO")
+            try:
+                user = await guild.fetch_member(payload.user_id)
+                reaction_message = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
+                await reaction_message.remove_reaction(payload.emoji, user)
+            except (discord.errors.NotFound, discord.errors.Forbidden):
+                pass
             return None
 
 def setup(bot: commands.Bot):
