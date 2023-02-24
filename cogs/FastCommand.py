@@ -27,6 +27,7 @@ class Fastcommands(commands.Cog):
                               description="Willkommen bei **Game-Energy**. Vielen Dank, dass du eine Anfrage für ein "
                                           "Server Sponsoring schickst.\n Bevor ich entscheiden kann, ob ein Sponsoring"
                                           " in Frage kommt, benötige ich noch einige Infos von dir.\n\n"
+                                          "- Stell dein Projekt bitte kurz vor \n"
                                           "- Mit wie vielen Spielern gleichzeitig rechnest auf dem Server?\n"
                                           "- Kannst du mir sagen wie lange dein Projekt geht?\n"
                                           "- Hast du Erfahrungen, wie du einen Server verwaltest und einrichtest?\n\n"
