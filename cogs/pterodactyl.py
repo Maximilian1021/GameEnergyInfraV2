@@ -28,7 +28,7 @@ class Pterodactyl(commands.Cog):
         self.bot.add_view(CreateAccount())
 
     @commands.slash_command(guild_ids=[889887499810394112])
-    @commands.has_permissions(manage_roles=True, ban_members=True)
+    @commands.has_permissions(view_audit_log=True, ban_members=True)
     async def account(self, ctx: discord.ApplicationContext, member: discord.Option(discord.Member,
                                                                                     "Member, dem die DM zugestellt "
                                                                                     "wird")):
