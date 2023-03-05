@@ -61,7 +61,7 @@ class Fastcommands(commands.Cog):
                                           "Discord-Bot-Hosting schickst.\n Bevor ich entscheiden kann, ob ein "
                                           "Discordbot-Sponsoring in Frage kommt. Benötige ich noch einige Infos "
                                           "von dir.\n\n"
-                                          "- Stell dein Projekt bitte kurz vor"
+                                          "- Stell dein Projekt bitte kurz vor\n"
                                           "- Mit welcher Sprache ist der Bot geschrieben? (Java, Python, JS etc.)\n"
                                           "- Welche Funktionen hat der Bot? (Kick, Ban, Verify, Musik etc.) \n"
                                           "- Auf wie vielen Server ist dein Bot derzeit aktiv? \n"
