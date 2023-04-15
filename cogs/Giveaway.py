@@ -2,8 +2,8 @@ import random
 import discord
 from discord.ext import commands
 
-time = "01.08.2022 - 18:00 Uhr"
-prize = "1 Random Steam Key"
+time = "18.04.2023 - 18:00 Uhr"
+prize = "Universale Handyhalterung"
 
 
 class Giveaway(commands.Cog):
@@ -18,6 +18,7 @@ class Giveaway(commands.Cog):
         embed.add_field(name="Preis", value="{}".format(prize), inline=False)
         embed.add_field(name="Hosted by", value=f"{ctx.author.mention}", inline=False)
         embed.add_field(name="Auslosung gegen", value=f"{time}")
+        embed.image("https://img.max1021.de/20230415_231719.jpg")
         msg = await ctx.send(embed=embed)
         reactions = await msg.add_reaction("🎉")
         await ctx.message.delete()
