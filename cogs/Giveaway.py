@@ -18,7 +18,7 @@ class Giveaway(commands.Cog):
         embed.add_field(name="Preis", value="{}".format(prize), inline=False)
         embed.add_field(name="Hosted by", value=f"{ctx.author.mention}", inline=False)
         embed.add_field(name="Auslosung gegen", value=f"{time}")
-        embed.image("https://img.max1021.de/20230415_231719.jpg")
+        embed.image.url("https://img.max1021.de/20230415_231719.jpg")
         msg = await ctx.send(embed=embed)
         reactions = await msg.add_reaction("🎉")
         await ctx.message.delete()
