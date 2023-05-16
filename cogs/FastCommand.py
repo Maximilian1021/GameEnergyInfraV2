@@ -108,6 +108,24 @@ class Fastcommands(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
+    @commands.command()
+    @commands.has_permissions(view_audit_log=True, ban_members=True)
+    async def IpChange(self, ctx):
+        embed = discord.Embed(title="Du bist betroffen", color=discord.Colour.dark_red(),
+                              description="Dein Server liegt auf der betroffenen Node und ist von dem IP Wechsel"
+                                          "betroffen. Es wird sich für dich nicht viel ändern, die Verwaltung "
+                                          "findet weiterhin über das Webpanel statt.\n\n Ich hab mit dem Hoster "
+                                          "besprochen, das der Wechsel zum folgenden Zeitpunkt stattfindet \n\n "
+                                          "**Wann?** -> Am 21.05.2023 zwischen  20:30 - 20:45 \n\n Zu dem Zeitpunkt wird der Server"
+                                          "in dem Wartungsmodus versetzt und alle laufenden Server heruntergefahren."
+                                          "Eine Verwaltung oder ein nutzen des Servers ist in der Zeit dann nicht "
+                                          "möglich. \n\n **Muss ich etwas am Server ändern?** \n Du musst nur was ändern "
+                                          "wenn du bspw. eine eigene Domain auf den Server geschalten hast __oder__ von"
+                                          " Game-Energy eine Domain geschalten wurde. Diese wird nach dem "
+                                          "Wechsel vorerst nicht funktionieren. Bitte melde dich dann bei uns.\n\n"
+                                          "__Wenn du weitere Fragen hast oder Unsicherheit herscht --> Melde dich__ ")
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
 
 def setup(bot: commands.Bot):
     bot.add_cog(Fastcommands(bot))
