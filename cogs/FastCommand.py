@@ -127,5 +127,20 @@ class Fastcommands(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
+
+    @commands.command()
+    @commands.has_permissions(view_audit_log=True, ban_members=True)
+    async def ServerGesperrt(self, ctx):
+        embed = discord.Embed(title="Dein Server wurde gesperrt", colour=discord.Colour.dark_red(),
+                              description="Am **__06.03.2023__** wurden alle Discordbot-User aufgerufen sich zu melden, ob "
+                                          "der Bot noch aktiv ist bzw. weiterentwickelt wird.\n\n Da du dich bis heute "
+                                          "nicht gemeldet hast, wurde dein Server nun gestoppt und gesperrt!. Du hast "
+                                          "nun **3 Tage Zeit**, dich zu melden anonsten wird das Sponsoring beendet "
+                                          "und ihr bekommt ein Backup zugesendet.")
+        embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
+                         icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
+
 def setup(bot: commands.Bot):
     bot.add_cog(Fastcommands(bot))
