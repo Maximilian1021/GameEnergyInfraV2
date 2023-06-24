@@ -9,7 +9,7 @@ class BlockIP(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.has_permissions(manage_roles=True, ban_members=True)
+    @commands.has_permissions(ban_members=True)
     @commands.command()
     async def blockIP(self, ctx, message: str):
         try:
