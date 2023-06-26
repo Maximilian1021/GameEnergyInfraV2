@@ -16,16 +16,17 @@ def add_ip_to_docker_user_chain(server_ip, server_port, ssh_key_path, username, 
         print(f"Error connecting to server: {e}")
         return
 
-    # Prüfen, ob die IP-Adresse in der DOCKER-USER-Kette ist
-    stdin, stdout, stderr = ssh.exec_command("sudo iptables -L DOCKER-USER -n")
+    # Prüfen, ob die IP-Adresse in der PREROUTING-Kette der Raw-Tabelle ist
+    check_command = "sudo iptables -t raw -L PREROUTING -n"
+    stdin, stdout, stderr = ssh.exec_command(check_command)
     output = stdout.read().decode()
     if ip_to_add in output:
-        print(f"The IP address {ip_to_add} is already in the DOCKER-USER chain on Server {server_ip}")
+        print(f"The IP address {ip_to_add} is already in the PREROUTING chain in the raw table on Server {server_ip}")
     else:
-        # Hinzufügen der IP-Adresse zur DOCKER-USER-Kette
-        add_command = f"sudo iptables -A DOCKER-USER -s {ip_to_add} -j DROP"
+        # Hinzufügen der IP-Adresse zur PREROUTING-Kette der Raw-Tabelle
+        add_command = f"sudo iptables -t raw -A PREROUTING -s {ip_to_add} -j DROP"
         stdin, stdout, stderr = ssh.exec_command(add_command)
-        print(f"IP address {ip_to_add} has been added to the DOCKER-USER chain on Server {server_ip}.")
+        print(f"IP address {ip_to_add} has been added to the PREROUTING chain in the raw table on Server {server_ip}.")
 
     # SSH-Verbindung schließen
     ssh.close()
