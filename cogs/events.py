@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 
+
 class Events(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
@@ -15,6 +16,7 @@ class Events(commands.Cog):
             bot_permissions = bot_member.guild_permissions
             if bot_permissions.manage_roles:
                 await member.add_roles(role)
+
 
 def setup(bot: commands.Bot):
     bot.add_cog(Events(bot))

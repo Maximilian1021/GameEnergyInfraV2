@@ -127,7 +127,6 @@ class Fastcommands(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-
     @commands.command()
     @commands.has_permissions(view_audit_log=True, ban_members=True)
     async def ServerGesperrt(self, ctx):
@@ -141,6 +140,7 @@ class Fastcommands(commands.Cog):
                          icon_url="https://cdn.max1021.de/G-E/GameEnergy_Green.png")
         await ctx.send(embed=embed)
         await ctx.message.delete()
+
 
 def setup(bot: commands.Bot):
     bot.add_cog(Fastcommands(bot))
