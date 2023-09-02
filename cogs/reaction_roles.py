@@ -3,17 +3,19 @@ import typing
 import discord
 from discord.ext import commands
 
+from config import config
+
 
 class RoleReact(commands.Cog):
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self.message_id: int = 1074077187285721290
+        self.message_id: int = config.get("reactioroles.message_id")
 
-    @commands.command()
+    @commands.command(name="RollenverteilungPic")
     @commands.has_permissions(manage_roles=True, ban_members=True)
-    async def RollenverteilungPic(self, ctx):
-
+    async def role_distribution_image(self, ctx):
+        # What is this needed for?
         embed = discord.Embed(colour=discord.Colour.teal())
         embed.set_image(url="https://img.max1021.de/cooltext393608521752631.png")
         await ctx.send(embed=embed)
@@ -21,16 +23,16 @@ class RoleReact(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_roles=True, ban_members=True)
-    async def RollenverteilungDesc(self, ctx):
+    async def role_distribution_description(self, ctx):
 
         embed = discord.Embed(title="Rollen erhalten!!",
                               description="Hier könnt ihr euch selbstständig Rollen zuweisen. Derzeit gibt es folgende "
                                           "Rollen zur Benachrichtigung \n\n"
-                                          ":fire: - Notify-Störung (Wird markiert bei Größeren Störungen)\n"
+                                          ":fire: - Notify-Störung (Wird markiert bei größeren Störungen)\n"
                                           ":green_book: - Notify-Neuerung (Wird markiert bei Neuerungen am "
                                           "Panel oder Discord)\n "
                                           ":soccer: - Tippspiel (Wird markiert, wenn es Infos ums Tippspiel geht)\n\n"
-                                          "Reagiere mit dem entsprechenden Emote um die Rolle "
+                                          "Reagiere mit dem entsprechenden Emote, um die Rolle "
                                           "zu erhalten!",
                               colour=discord.Colour.teal())
         mess = await ctx.send(embed=embed)
@@ -64,11 +66,9 @@ class RoleReact(commands.Cog):
         guild = self.bot.get_guild(payload.guild_id)
         if payload.emoji.id:
             return None
-        if str(payload.emoji) == "🔥":
-            return guild.get_role(889983007480479744)
-        elif str(payload.emoji) == "📗":
-            return guild.get_role(889983085108678686)
-        else:
+        try:
+            return config.get(f"reactioroles.{str(payload.emoji)}")
+        except KeyError:
             print("NO")
             try:
                 user = await guild.fetch_member(payload.user_id)
@@ -78,10 +78,6 @@ class RoleReact(commands.Cog):
                 pass
             return None
 
+
 def setup(bot: commands.Bot):
     bot.add_cog(RoleReact(bot))
-
-
-    # 889983085108678686 -> Notify Neuerung 📗
-    # 889983007480479744 -> Notify Störung 🔥
-    # 1043437336085672016 -> Tippspiel ⚽

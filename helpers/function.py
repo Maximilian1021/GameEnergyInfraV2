@@ -1,9 +1,11 @@
+import os
 import smtplib
 from email.mime.text import MIMEText
 from email.utils import make_msgid, formatdate
 
 
 def sendmail():
+    # No usage found for this function
     try:
         # Create your SMTP session
         smtp = smtplib.SMTP('mail.game-energy.de', 587)
@@ -12,7 +14,7 @@ def sendmail():
         smtp.starttls()
 
         # User Authentication
-        smtp.login("no-reply@max1021.de", "!Italien2021?")
+        smtp.login("no-reply@max1021.de", os.getenv("MAIL_PASSWORD"))
 
         # Define the Message
         msg = MIMEText('Hallo ')

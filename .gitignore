@@ -1,6 +1,8 @@
 /pycord/
 /.idea/.gitignore
-/Bot.env
+/bot.env
+/key.pem
+/config.json
 /.idea/GameEnergyInfraV2.iml
 /.idea/misc.xml
 /.idea/modules.xml
