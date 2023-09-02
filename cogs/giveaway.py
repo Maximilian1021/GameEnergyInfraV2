@@ -1,4 +1,5 @@
 import random
+
 import discord
 from discord.ext import commands
 
@@ -11,16 +12,17 @@ class Giveaway(commands.Cog):
         self.bot = bot
 
     @commands.has_permissions(manage_roles=True, ban_members=True)
-    @commands.command()
-    async def GiveawayCreate(self, ctx):
+    @commands.command(name="GiveawayCreate")
+    async def create_giveaway(self, ctx):
         embed = discord.Embed(colour=discord.Colour.teal(), title="Neues Gewinnspiel",
                               description="Reagiere mit :tada:, um teilzunehmen!")
         embed.add_field(name="Preis", value="{}".format(prize), inline=False)
         embed.add_field(name="Hosted by", value=f"{ctx.author.mention}", inline=False)
         embed.add_field(name="Auslosung gegen", value=f"{time}", inline=False)
-        embed.add_field(name="Extra Infos", value="Von dem Gewinner benötige ich dann die Adresse zum zuschicken \n siehe extra Bild", inline=False)
+        embed.add_field(name="Extra Infos", value="Von dem Gewinner benötige ich dann die Adresse zum zuschicken\n"
+                                                  "siehe extra Bild", inline=False)
         msg = await ctx.send(embed=embed)
-        reactions = await msg.add_reaction("🎉")
+        await msg.add_reaction("🎉")
         await ctx.message.delete()
 
     @commands.slash_command()
@@ -50,6 +52,8 @@ class Giveaway(commands.Cog):
             raise commands.CommandError("Bitte gib eine größere Anzahl an Gewinnern an")
         if winners == 1:
             winner = random.choice(await reaction.users().flatten())
+            while winner == self.bot.user and reaction.count > 1:
+                winner = random.choice(await reaction.users().flatten())
             await ctx.respond(f"Der Gewinner ist {winner.mention}")
             embed = discord.Embed(title="Giveaway Auslosung :tada:",
                                   description=f"Gewonnen haben folgende User: {winner.mention} \n **Herzlichen"
@@ -68,7 +72,8 @@ class Giveaway(commands.Cog):
             embed = discord.Embed(title="Giveaway Auslosung :tada:",
                                   description=f"Gewonnen haben folgende User: {', '.join(_winners)}"
                                               f"\n**Herzlichen Glückwunsch** \n Bitte meldet euch bei mir "
-                                              f"via Ticket (wenn du bereits eins offen hast, nutze dies hierfür!)")
+                                              f"via Ticket (wenn du bereits eins offen hast, nutze dies hierfür!)",
+                                  colour=discord.Colour.green())
             await ctx.respond(embed=embed)
 
 

@@ -1,0 +1,20 @@
+{
+  "pterodactyl": "https://example.com/",
+  "guilds": [
+    0
+  ],
+  "servers": [
+    "example.com"
+  ],
+  "roles": {
+    "user": 0
+  },
+  "channels": {
+    "log": 0,
+    "suggestions": 0
+  },
+  "reactioroles": {
+    "message_id": 0,
+    "🎮": 0
+  }
+}

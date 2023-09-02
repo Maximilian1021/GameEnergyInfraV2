@@ -1,19 +1,24 @@
-import datetime
 import os
+from datetime import datetime
 from pathlib import Path
+
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-from datetime import datetime
 
-load_dotenv("Bot.env")
+load_dotenv("bot.env")
 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or("$"), intents=discord.Intents.all(),
-                   case_insensitive=True, description="Bot description", help_command=None, auto_sync_commands=True
-                   )
+bot = commands.Bot(
+    command_prefix=commands.when_mentioned_or("$"),
+    intents=discord.Intents.all(),
+    case_insensitive=True,
+    description="Game-Energy Discord Bot",
+    help_command=None,
+    auto_sync_commands=True
+)
 
 now = datetime.now()
-dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+dt_string = now.strftime("%d.%m.%Y %H:%M:%S")
 
 
 @bot.event
@@ -24,8 +29,13 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('---------------------------')
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Game-Energy Discord"),
-                              status=discord.Status.idle)
+    await bot.change_presence(
+        activity=discord.Activity(
+            type=discord.ActivityType.watching,
+            name="Game-Energy Discord"
+        ),
+        status=discord.Status.idle
+    )
 
 
 def extensions():
@@ -55,9 +65,8 @@ def unload():
 async def client_reload():
     unload()
     load()
-    print("")
-    print(f"Reloaded at {dt_string}")
-    print("")
+    print(f"\nReloaded at {dt_string}")
+
 
 @bot.command()
 async def reload(ctx):

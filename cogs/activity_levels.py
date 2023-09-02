@@ -2,14 +2,14 @@ import discord
 from discord.ext import commands
 
 
-class Aktivitätsstufen(commands.Cog):
+class ActivityLevels(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(name="akvSt1")
     @commands.has_permissions(view_audit_log=True, ban_members=True)
-    async def akvSt1(self, ctx):
+    async def activity_stage_one(self, ctx):
         embed = discord.Embed(title="Stufe 1 - Aktivitätsregelung", colour=discord.Colour.green(),
                               description="Ich habe festgestellt, das seit längerem keine Aktivität auf dem "
                                           "Server zu sehen ist!\n Gibt es derzeit irgendwelche Probleme bei welchen "
@@ -23,9 +23,9 @@ class Aktivitätsstufen(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    @commands.command()
+    @commands.command("akvSt2")
     @commands.has_permissions(view_audit_log=True, ban_members=True)
-    async def akvSt2(self, ctx):
+    async def activity_stage_two(self, ctx):
         embed = discord.Embed(title="Stufe 2 - Aktivitätsregelung", colour=discord.Colour.orange(),
                               description="Ich habe weiterhin keine Aktivität auf deinem Server festgestellt oder "
                                           "du hast dich bei mir noch nicht gemeldet! Es treten nun folgende Punkte"
@@ -35,7 +35,7 @@ class Aktivitätsstufen(commands.Cog):
                                           "gespielt wird. \n oder \n Sollte der Server bereits gestoppt "
                                           "sein bleibt er gestoppt und steht weiterhin unter Beobachtung! "
                                           "\n\n Du hast nun __3 Tage__ Zeit dich bei mir Zurückzumelden, bevor du "
-                                          "in Stufe 3 Rutscht! \n\n"
+                                          "in Stufe 3 rutschst! \n\n"
                                           "Viele Grüße \n\n **Maximilian1021** \n Game-Energy \n Administrator /"
                                           " Owner")
         embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
@@ -43,16 +43,16 @@ class Aktivitätsstufen(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    @commands.command()
+    @commands.command(name="akvSt3")
     @commands.has_permissions(view_audit_log=True, ban_members=True)
-    async def akvSt3(self, ctx):
+    async def activity_stage_three(self, ctx):
         embed = discord.Embed(title="Stufe 3 - Aktivitätsregelung", colour=discord.Colour.red(),
                               description="Du hast dich nicht gemeldet oder die Aktivität auf dem Server hat "
                                           "sich nicht verändert! Dein Server ist nun gesperrt und du kannst "
                                           "auf keine Daten mehr zugreifen.\n\n **Das Sponsoring ist somit "
                                           "beendet**! \n\n Du erhältst in Kürze eine E-Mail mit "
                                           "dem letzten Backup deines Servers! \nDu bist für 3 Monate vom Sponsoring "
-                                          "ausgeschlossen! Danach kannst du wieder eine Anfrage stellen\n\n"
+                                          "ausgeschlossen! Danach kannst du wieder eine Anfrage stellen.\n\n"
                                           "Viele Grüße \n\n **Maximilian1021** \n Game-Energy \n Administrator /"
                                           " Owner")
         embed.set_footer(text=f"Nachricht wurde von {ctx.author} ausgelöst",
@@ -60,9 +60,9 @@ class Aktivitätsstufen(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    @commands.command()
+    @commands.command(name="MailBackup")
     @commands.has_permissions(view_audit_log=True, ban_members=True)
-    async def MailBackup(self, ctx):
+    async def mail_backup(self, ctx):
         embed = discord.Embed(title="Information über das Backup", colour=discord.Colour.darker_gray(),
                               description="Du erhältst in den nächsten paar Minuten eine E-Mail mit den Infos "
                                           "zu deinem Backup. Damit nur du das Backup herunterladen kannst bekommst "
@@ -78,4 +78,4 @@ class Aktivitätsstufen(commands.Cog):
 
 
 def setup(bot: commands.Bot):
-    bot.add_cog(Aktivitätsstufen(bot))
+    bot.add_cog(ActivityLevels(bot))

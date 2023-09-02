@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 
+from config import config
+
 
 class Logger(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -9,7 +11,7 @@ class Logger(commands.Cog):
 
     @commands.Cog.listener("on_ready")
     async def on_ready(self):
-        self.channel = self.bot.get_channel(889984840718512150)
+        self.channel = self.bot.get_channel(config.get("channels.log"))
 
     @commands.Cog.listener("on_member_join")
     async def join_logger(self, member: discord.Member):
