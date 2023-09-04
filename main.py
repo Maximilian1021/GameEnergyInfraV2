@@ -6,6 +6,8 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
+from config import config
+
 load_dotenv("bot.env")
 
 bot = commands.Bot(
@@ -71,6 +73,7 @@ async def client_reload():
 @bot.command()
 async def reload(ctx):
     await client_reload()
+    config.reload()
     embed = discord.Embed(title="Reload abgeschlossen!", colour=discord.Colour.red(),
                           description="Alle Module des Discord Bots wurden erfolgreich neu geladen")
     embed.set_footer(text=f"Reload wurde von {ctx.author} ausgelöst",
