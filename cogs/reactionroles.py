@@ -21,7 +21,7 @@ class RoleReact(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.message.delete()
 
-    @commands.command()
+    @commands.command(name="RollenverteilungDesc")
     @commands.has_permissions(manage_roles=True, ban_members=True)
     async def role_distribution_description(self, ctx):
 
@@ -43,8 +43,15 @@ class RoleReact(commands.Cog):
 
     @commands.Cog.listener("on_raw_reaction_add")
     async def reaction_add(self, payload: discord.RawReactionActionEvent):
+        guild = self.bot.get_guild(payload.guild_id)
         role = await self.get_role(payload)
         if not role:
+            user = await guild.fetch_member(payload.user_id)
+            reaction_message = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
+            try:
+                await reaction_message.remove_reaction(payload.emoji, user)
+            except (discord.errors.NotFound, discord.errors.Forbidden):
+                pass
             return
         await role.guild.get_member(payload.user_id).add_roles(role, reason="Reactionroles")
 
@@ -67,15 +74,8 @@ class RoleReact(commands.Cog):
         if payload.emoji.id:
             return None
         try:
-            return config.get(f"reactioroles.{str(payload.emoji)}")
+            return guild.get_role(config.get(f"reactioroles.{str(payload.emoji)}"))
         except KeyError:
-            print("NO")
-            try:
-                user = await guild.fetch_member(payload.user_id)
-                reaction_message = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
-                await reaction_message.remove_reaction(payload.emoji, user)
-            except (discord.errors.NotFound, discord.errors.Forbidden):
-                pass
             return None
 
 
